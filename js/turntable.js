@@ -112,9 +112,11 @@ $('.pointer').on('click', function() {
         success:function(res){
             if(res.code == 200){
                 game.resultindex = res.data.index;
+                game.type = Number(res.data.type);
                 game.deg = game.deg + (360 - game.deg % 360) + (360 * 10 - game.resultindex * (360 / game.num))
-                game.chanceCount()
+                game.chanceCount();
                 game.runRotate(game.deg)
+                game.rewardPush(res.data)
             }
         },
         error:function(){
@@ -141,14 +143,24 @@ var game = {
         var num = $('#count').text() - 1;
         $('#count').text(num);
         game.count = num;
+    },
+    rewardPush:function(data){
+        $('#emptyReward').remove();
+        var item = '<a class="item" href="'+data.href+'">'+    
+                        '<img  src="'+data.imgUrl+'">'+   
+                        '<div class="item-info">'+
+                           '<h3>'+data.prize+'</h3><span>有效期: '+data.effectTime+'</span>'+
+                        '</div>'+
+                   '</a>';
+        $('.award-list').append(item)
     }
 
 
 }
 
 $('.turntable').on('transitionEnd webkitTransitionEnd', function() {
-    var type = Math.floor(Math.random() * 3 + 1)
-    switch (type) {
+    // var type = Math.floor(Math.random() * 3 + 1)
+    switch (game.type) {
         case 1:
             result1.show()
             break;

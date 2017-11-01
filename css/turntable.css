@@ -258,6 +258,7 @@ body {
     background-color: #fff;
     background: #fff url(../imgs/right.png) 97% center no-repeat;
     background-size: .26rem .31rem;
+    color: #333;
 }
 
 .award-list .item img {
