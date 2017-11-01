@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="js/rem.js"></script>
+    <title>大转盘</title>
+    <link rel="stylesheet" href="css/turntable.css">
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="content">
+        <div class="count_box">今日还可以免费抽奖<span id="count">6</span>次</div>
+        <div class="turntable-box" id="turntable">
+            <div class="pointer"></div>
+            <span class="DB_G_circle"></span>
+            <span class="DB_G_hand"></span>
+            <div class="turntable">
+                <!--                 <ul class="prize_list">
+                    <li class="prize_item prize_item_1">1</li>
+                    <li class="prize_item prize_item_2">2</li>
+                    <li class="prize_item prize_item_3">3</li>
+                    <li class="prize_item prize_item_4">4</li>
+                    <li class="prize_item prize_item_5">5</li>
+                    <li class="prize_item prize_item_6">6</li>
+                </ul> -->
+            </div>
+        </div>
+        <div class="gift gift_left"></div>
+        <div class="gift gift_right"></div>
+    </div>
+    <div class="btn_group">
+        <a href="javascript:" class="rule"></a><a href="javascript:" class="myaward"></a>
+    </div>
+    <link rel="stylesheet" href="css/modal.css">
+    <!-- 弹框1 -->
+    <div class="J_modalShowPrize coupon-modal-showPrize" id="result1" style="display: none;">
+        <div class="coupon-modal-animate">
+            <div class="coupon-modal-showPrize-dialog">
+                <span class="close coupon-modal-close"></span>
+                <div class="modal-light modal-light1">
+                    <div class="l-shine l-shine1"></div>
+                </div>
+                <div class="modal-header"></div>
+                <div class="modal-body withoutCode">
+                    <div class="body-header"></div>
+                    <div class="coupon-wrapper">
+                        <div class="coupon-image">
+                            <img class="J_gotoDetail logandgo" data-pic="true" src="./imgs/ad.png">
+                        </div>
+                    </div>
+                    <div class="body-footer">
+                        <span class="coupon-win">恭喜您获得了IPhoneX换购资格</span>
+                        <h3 class="coupon-name"><span>加17元换购</span></h3>
+                        <button type="button" class="J_btnCoupon coupon-use"><span>立即换购</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框2 -->
+    <div class="J_modalShowPrize coupon-modal-showPrize" id="result2" style="display: none;">
+        <div class="coupon-modal-animate">
+            <div class="coupon-modal-showPrize-dialog coupon-modal-showPrize-dialog2">
+                <span class="close coupon-modal-close"></span>
+                <div class="modal-light modal-light2">
+                    <div class="l-shine l-shine2"></div>
+                </div>
+                <div class="modal-header"></div>
+                <div class="modal-body withoutCode">
+                    <div class="body-header body-header2"></div>
+                    <div class="coupon-wrapper coupon-wrapper2">
+                        <div class="prize-headname2">恭喜您获得了50元话费!</div>
+                        <div class="coupon-image coupon-image2">
+                            <img class="J_gotoDetail logandgo" data-pic="true" src="./imgs/fivity.png">
+                        </div>
+                    </div>
+                    <div class="body-footer">
+                        <span class="coupon-win coupon-win2">请输入手机号以便为您发放礼包</span>
+                        <div class="form">
+                            <div class="form-group">
+                                <input type="number" placeholder="请输入手机号" class="phone" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" placeholder="请输入验证码" class="code" id="code"><button class="getCode" id="getCode">获取验证码</button>
+                            </div>
+
+                        </div>
+                        <button type="button" class="J_btnCoupon coupon-use" id="getHuaFei"><span>立即领取</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框3 -->
+    <div class="J_modalShowPrize coupon-modal-showPrize" id="result3" style="display: none;">
+        <div class="coupon-modal-animate">
+            <div class="coupon-modal-showPrize-dialog coupon-modal-showPrize-dialog3">
+                <span class="close coupon-modal-close"></span>
+                <div class="modal-light modal-light3">
+                    <div class="l-shine l-shine3"></div>
+                </div>
+                <div class="modal-header"></div>
+                <div class="modal-body withoutCode">
+                   
+                    <div class="coupon-wrapper coupon-wrapper3">
+                        <div class="coupon-image coupon-image3">
+                            <img class="J_gotoDetail logandgo" data-pic="true" src="imgs/coin.png">
+                        </div>
+                    </div>
+
+                        <button type="button" class="J_btnCoupon coupon-use coupon-use3"><span>立即换购</span></button>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏规则 -->
+    <link rel="stylesheet" href="css/rule.css">
+    <div class="rule-modal" style="display: none;" id="rule">
+        <div class="rule-modal-dialog">
+            <header><i></i><span>活动说明</span><i></i></header>
+            <section>
+                <div class="description" style="overflow: auto;">
+                    <div class="description-scroller">
+                        <p>追剧领红包，领到你手软~</p>
+                        <p>活动说明：参与活动即有机会获得幸运奖~每天可免费参与8次。此活动为概率中奖，奖品数量有限，祝好运！</p>
+                        <p>惊喜一：iPhone7手机</p>
+                        <p>惊喜二：1000元红包</p>
+                        <p>惊喜三：500元红包</p>
+                        <p>惊喜四：100元红包</p>
+                        <p>惊喜五：10元红包</p>
+                        <p>惊喜六：幸运福袋</p>
+                        <p>－－－－－－－－－－－－－－－－</p>
+                        <p>重要声明</p>
+                        <p>1、实物类奖品将在活动结束后5-10个工作日安排发货，请耐心等待</p>
+                        <p>2、优惠券类奖品的使用规则详见每个优惠券的介绍页</p>
+                        <p>3、请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线：400-080-6659或客服QQ：4000806659（工作日9:00至18:00）</p>
+                        <p>4、通过非法途径获得奖品的，主办方有权不提供奖品</p>
+                    </div>
+                </div>
+            </section>
+            <div class="close"></div>
+        </div>
+    </div>
+    <!-- 我的奖品 -->
+    <div class="award-page" id="myreward">
+        <div class="myaward-header"><i class="return"></i>我的奖品</div>
+        <div class="list-box">
+            <div class="award-list">
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+                <a class="item">     
+                    <img  src="./imgs/random.png">     
+                    <div class="item-info">       
+                        <h3>加盟！做炸鸡我们是专业的</h3><span>有效期: 2018-02-28</span>
+                    </div>                       
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/turntable.js"></script>
+</body>
+
+</html>
